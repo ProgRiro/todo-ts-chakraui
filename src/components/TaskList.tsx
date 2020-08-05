@@ -1,4 +1,5 @@
 import React from "react";
+import { Flex, List } from "@chakra-ui/core";
 import TaskItem from "./TaskItem";
 import { Task } from "./Types";
 
@@ -19,11 +20,17 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div className="inner">
+    <Flex>
       {tasks.length <= 0 ? (
         "登録されたTODOはありません。"
       ) : (
-        <ul className="task-list">
+        <List
+          display="flex"
+          flexDirection="column"
+          // alignItems="center"
+          w="50%"
+          mx="auto"
+        >
           {tasks.map((task) => (
             <TaskItem
               key={task.id}
@@ -32,9 +39,9 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
               handleDone={handleDone}
             />
           ))}
-        </ul>
+        </List>
       )}
-    </div>
+    </Flex>
   );
 };
 
